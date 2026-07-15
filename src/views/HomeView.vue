@@ -94,7 +94,7 @@ const timeline = storyData.timeline as TimelinePoint[]
 const pointByYear = new Map(timeline.map((item) => [item.year, item]))
 
 const heroTitle = storyData.meta.story.title
-const heroTheme = storyData.meta.story.theme
+const heroSubhead = 'Ten people reached orbit in 2005. Last year, 267 did.'
 
 const getPointsBetween = (start: number, end: number) =>
   timeline.filter((point) => point.year >= start && point.year <= end)
@@ -540,9 +540,9 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
       <div class="content-shell hero-content">
         <img class="hero-logo reveal" style="--d: 20ms" src="../images/MS_logo.png" alt="Meridian Story logo" />
         <h1 class="reveal" style="--d: 140ms">{{ heroTitle }}</h1>
-        <p class="hero-theme reveal" style="--d: 240ms">{{ heroTheme }}</p>
+        <p class="hero-theme reveal" style="--d: 240ms">{{ heroSubhead }}</p>
         <p class="hero-subtext reveal" style="--d: 340ms">
-          A visual story about how space quietly became routine.
+          A visual story about what happens when the extraordinary stops being rare.
         </p>
       </div>
     </header>
@@ -560,7 +560,7 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
             <ChapterEyebrow text="Chapter 1 - Not Long Ago" />
             <h2>Space was extraordinary.</h2>
             <p class="chapter-message">
-              Access to orbit remained rare, expensive, and concentrated in government programs.
+              Getting to orbit was rare, expensive, and almost entirely government work.
             </p>
           </div>
           <div class="opening-stat reveal" style="--d: 220ms">
@@ -589,8 +589,7 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
             <ChapterEyebrow text="Chapter 2 - Everything Changed" />
             <h2>The curve bent fast.</h2>
             <p class="chapter-message">
-              Commercial launch cadence climbed as ticket prices dropped, changing the trajectory of the entire
-              industry.
+              Launches climbed while ticket prices fell. Neither line moved on its own.
             </p>
           </div>
           <div class="wide-chart-frame reveal" style="--d: 210ms">
@@ -612,13 +611,16 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         <ChapterBackgroundImage :image-src="chapter3Image" />
         <div class="content-shell chapter-layout threshold-layout">
           <ChapterEyebrow class="reveal" style="--d: 70ms" text="Chapter 3 - We've Crossed a Threshold" />
-          <h2 class="reveal" style="--d: 170ms">The transformation is already happening.</h2>
+          <h2 class="reveal" style="--d: 170ms">It already happened.</h2>
+          <p class="chapter-message reveal" style="--d: 250ms">
+            We kept waiting for the moment space would open up. It opened while we were waiting.
+          </p>
           <div class="hero-number reveal" style="--d: 300ms">
             {{ formatNumber(animatedValues.c3People2025) }}
           </div>
-          <p class="hero-number-caption reveal" style="--d: 390ms">People reached orbit in a single year.</p>
+          <p class="hero-number-caption reveal" style="--d: 390ms">people reached orbit in a single year.</p>
           <p class="threshold-detail reveal" style="--d: 470ms">
-            {{ animatedValues.c3CommercialShare }}% of launches in that year were commercial.
+            Two out of three launches were commercial. It did not make the news.
           </p>
           <div class="threshold-chart reveal" style="--d: 560ms">
             <Line :data="chapter3ChartData" :options="chapter3LineOptions" />
@@ -632,20 +634,16 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         class="story-chapter section-gap-xl chapter-ecosystem bg-orbital-grid"
         :class="{ 'is-visible': visibleChapters.chapter4_expandingPossibilities, 'is-active': activeChapter === 'chapter4_expandingPossibilities' }"
       >
-        <ChapterBackgroundImage
-          :image-src="chapter4Image"
-          overlay-from="rgba(5, 9, 18, 0.28)"
-          overlay-to="rgba(5, 9, 18, 0.56)"
-        />
+        <ChapterBackgroundImage :image-src="chapter4Image" />
         <div class="content-shell chapter-layout ecosystem-layout">
           <div class="ecosystem-copy reveal" style="--d: 80ms">
             <ChapterEyebrow text="Chapter 4 - Expanding Possibilities" />
             <h2>Space is becoming an economy.</h2>
             <p class="chapter-message">
-              The destination did not change. The reasons for going did.
+              Orbit is still the same place. What changed is who needs to be there.
             </p>
             <p class="chapter-message ecosystem-secondary-copy">
-              Commercial launches now support tourism, research, cargo, manufacturing, medicine, and infrastructure.
+              Tourism, research, cargo, manufacturing, medicine, infrastructure. Six industries with a reason to go.
             </p>
             <p class="ecosystem-fact">
               Infrastructure missions by 2030: <strong>{{ animatedValues.c4Infra2030 }}</strong>
@@ -670,12 +668,9 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         <div class="content-shell chapter-layout finale-layout">
           <div class="finale-text reveal" style="--d: 80ms">
             <ChapterEyebrow text="Chapter 5 - What's Next?" />
-            <h2>Possibility, not prediction.</h2>
+            <h2>What comes next isn't on this chart.</h2>
             <p class="chapter-message">
-              Routine access doesn't tell us exactly what comes next.
-            </p>
-            <p class="chapter-message finale-secondary-copy">
-              It changes what becomes plausible.
+              Routine access doesn't tell us what people will do with it. It changes what becomes plausible.
             </p>
           </div>
           <div class="finale-metrics reveal" style="--d: 210ms">
@@ -698,12 +693,9 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         <div class="content-shell epilogue-content">
           <h2 class="epilogue-headline">Every revolution begins by becoming ordinary.</h2>
           <p class="epilogue-copy">
-            Once something becomes routine, people stop asking if it's possible.
+            People stop asking what's possible. They start asking what they can build.
           </p>
-          <p class="epilogue-copy">
-            They begin asking what they can build with it.
-          </p>
-          <p class="epilogue-copy">Commercial spaceflight may be entering that moment now.</p>
+          <p class="epilogue-copy">Commercial spaceflight is entering that moment now.</p>
           <img class="epilogue-logo" src="../images/MS_logo.png" alt="Meridian Story logo" />
         </div>
       </section>
@@ -751,8 +743,8 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
   min-height: 92svh;
   display: flex;
   align-items: center;
-  background: linear-gradient(180deg, rgba(5, 9, 18, 0.46), rgba(5, 9, 18, 0.64)),
-    linear-gradient(90deg, rgba(5, 9, 18, 0.42), rgba(5, 9, 18, 0.06)),
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.28), rgba(5, 9, 18, 0.42)),
+    linear-gradient(90deg, rgba(5, 9, 18, 0.24), rgba(5, 9, 18, 0.04)),
     url('../images/hero.jpg');
   background-size: cover;
   background-position: center center;
@@ -764,10 +756,13 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
 }
 
 .hero-logo {
-  width: clamp(170px, 18vw, 280px);
+  width: clamp(123px, 13vw, 202px);
   height: auto;
   display: block;
-  margin-bottom: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  position: relative;
+  top: 2rem;
 }
 
 .hero-kicker,
@@ -801,14 +796,21 @@ h2 {
   margin: 1rem 0 0;
   max-width: 55ch;
   font-size: clamp(1.1rem, 2.1vw, 1.55rem);
-  color: var(--c-light);
+  color: #c8b185;
 }
 
-.hero-subtext,
 .chapter-message {
   margin: 1.2rem 0 0;
   max-width: 60ch;
   line-height: 1.7;
+  color: #c8b185;
+}
+
+.hero-subtext {
+  margin: 2rem 0 0;
+  max-width: 60ch;
+  line-height: 1.7;
+  font-style: italic;
   color: var(--c-body);
 }
 
@@ -951,7 +953,7 @@ h2 {
   width: min(780px, 100%);
   border: 1px solid rgba(72, 86, 150, 0.42);
   border-radius: 16px;
-  background: rgba(18, 24, 44, 0.82);
+  background: rgba(18, 24, 44, 0.92);
   padding: 0.9rem;
 }
 
@@ -999,7 +1001,7 @@ h2 {
 .wide-chart-frame {
   height: 380px;
   border: 1px solid rgba(72, 86, 150, 0.42);
-  background: rgba(18, 24, 44, 0.84);
+  background: rgba(18, 24, 44, 0.92);
   border-radius: 20px;
   padding: 1rem;
 }
@@ -1042,16 +1044,20 @@ h2 {
 }
 
 .hero-number {
-  margin-top: 0.25rem;
+  margin-top: 1rem;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(4rem, 13vw, 9.8rem);
   line-height: 0.9;
   letter-spacing: -0.03em;
 }
 
-.hero-number-caption,
+.hero-number-caption {
+  margin: 0.9rem 0 0;
+  color: #c8b185;
+}
+
 .threshold-detail {
-  margin: 0;
+  margin: 0.75rem 0 0;
   color: var(--c-light);
 }
 
@@ -1061,7 +1067,7 @@ h2 {
   height: 215px;
   border: 1px solid rgba(72, 86, 150, 0.42);
   border-radius: 16px;
-  background: rgba(18, 24, 44, 0.84);
+  background: rgba(18, 24, 44, 0.92);
   padding: 0.9rem;
 }
 
@@ -1091,7 +1097,7 @@ h2 {
   height: 390px;
   border: 1px solid rgba(72, 86, 150, 0.42);
   border-radius: 18px;
-  background: rgba(18, 24, 44, 0.84);
+  background: rgba(18, 24, 44, 0.92);
   padding: 1rem;
 }
 
@@ -1112,7 +1118,7 @@ h2 {
   height: 250px;
   border: 1px solid rgba(72, 86, 150, 0.42);
   border-radius: 14px;
-  background: rgba(18, 24, 44, 0.84);
+  background: rgba(18, 24, 44, 0.92);
   padding: 0.9rem;
 }
 
@@ -1135,7 +1141,7 @@ h2 {
   display: flex;
   align-items: center;
   border-top: 1px solid rgba(72, 86, 150, 0.35);
-  background: linear-gradient(180deg, rgba(5, 9, 18, 0.42), rgba(6, 11, 20, 0.74)),
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.34), rgba(6, 11, 20, 0.56)),
     url('../images/close.jpg');
   background-size: cover;
   background-position: center center;
@@ -1146,7 +1152,7 @@ h2 {
   max-width: 820px;
   text-align: center;
   display: grid;
-  gap: 0.7rem;
+  gap: 0;
 }
 
 .epilogue-headline {
@@ -1157,16 +1163,20 @@ h2 {
 }
 
 .epilogue-copy {
-  margin: 0;
-  color: #d5d7df;
+  margin: 0.7rem 0 0;
+  color: #c8b185;
   line-height: 1.75;
 }
 
+.epilogue-headline + .epilogue-copy {
+  margin-top: 1.2rem;
+}
+
 .epilogue-logo {
-  width: clamp(170px, 18vw, 280px);
+  width: clamp(115px, 12.2vw, 184px);
   height: auto;
   justify-self: center;
-  margin-top: 1.25rem;
+  margin-top: 2rem;
 }
 
 .bg-orbit-dawn {

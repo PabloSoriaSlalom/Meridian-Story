@@ -9,10 +9,10 @@ const props = withDefaults(
     position?: string
   }>(),
   {
-    overlayFrom: 'rgba(5, 9, 18, 0.18)',
-    overlayTo: 'rgba(5, 9, 18, 0.38)',
-    toneFrom: 'rgba(10, 16, 31, 0.1)',
-    toneTo: 'rgba(6, 12, 24, 0.26)',
+    overlayFrom: 'rgba(5, 9, 18, 0.28)',
+    overlayTo: 'rgba(5, 9, 18, 0.42)',
+    toneFrom: 'rgba(10, 16, 31, 0.24)',
+    toneTo: 'rgba(6, 12, 24, 0.04)',
     position: 'center center',
   },
 )
@@ -39,7 +39,7 @@ const props = withDefaults(
 .chapter-background {
   position: absolute;
   inset: 0;
-  opacity: 0.72;
+  opacity: 1;
 }
 
 .background-image,

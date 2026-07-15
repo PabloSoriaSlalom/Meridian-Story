@@ -15,7 +15,7 @@ defineProps<{
 <style scoped>
 .metric-mini-card {
   border: 1px solid rgba(72, 86, 150, 0.42);
-  background: rgba(18, 24, 44, 0.84);
+  background: rgba(18, 24, 44, 0.92);
   border-radius: 14px;
   padding: 1rem;
 }
