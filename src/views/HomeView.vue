@@ -140,6 +140,14 @@ let barTweenStarted = false
 
 const activeChapter = ref<ChapterId>('chapter1_notLongAgo')
 const chapterElements = new Map<ChapterId, HTMLElement>()
+const heroBlock = ref<HTMLElement | null>(null)
+const epilogueBlock = ref<HTMLElement | null>(null)
+const chapterProgressCssCache = new Map<ChapterId, string>()
+const chapterShiftCssCache = new Map<ChapterId, string>()
+let heroContentShiftCssCache = ''
+let heroBgShiftCssCache = ''
+let epilogueContentShiftCssCache = ''
+let epilogueBgShiftCssCache = ''
 let scrollRafId: number | null = null
 let pendingScrollFrame = false
 
@@ -439,16 +447,6 @@ const setSectionRef =
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value))
 
-const computeSectionProgress = (element: HTMLElement) => {
-  const rect = element.getBoundingClientRect()
-  const viewportCenter = window.innerHeight * 0.5
-  const sectionCenter = rect.top + rect.height * 0.5
-  const startDistance = window.innerHeight * 0.48
-  const distanceToCenter = sectionCenter - viewportCenter
-  const raw = 1 - distanceToCenter / startDistance
-  return clamp(raw)
-}
-
 const startBarTween = () => {
   if (barTweenStarted) {
     return
@@ -472,6 +470,9 @@ const startBarTween = () => {
 
 const updateScrollDrivenState = () => {
   pendingScrollFrame = false
+  const viewportHeight = window.innerHeight
+  const viewportCenter = viewportHeight * 0.5
+  const chapterStartDistance = viewportHeight * 0.48
 
   let bestChapter: ChapterId = activeChapter.value
   let closestDistance = Number.POSITIVE_INFINITY
@@ -482,15 +483,26 @@ const updateScrollDrivenState = () => {
       return
     }
 
-    const progress = computeSectionProgress(element)
+    const rect = element.getBoundingClientRect()
+    const sectionCenter = rect.top + rect.height * 0.5
+    const progress = clamp(1 - (sectionCenter - viewportCenter) / chapterStartDistance)
     chapterProgress[chapterId] = Math.max(chapterProgress[chapterId], progress)
     visibleChapters[chapterId] = progress > 0.16
 
-    element.style.setProperty('--chapter-progress', chapterProgress[chapterId].toFixed(4))
+    const progressCssValue = chapterProgress[chapterId].toFixed(4)
+    if (chapterProgressCssCache.get(chapterId) !== progressCssValue) {
+      element.style.setProperty('--chapter-progress', progressCssValue)
+      chapterProgressCssCache.set(chapterId, progressCssValue)
+    }
 
-    const rect = element.getBoundingClientRect()
-    const sectionCenter = rect.top + rect.height * 0.5
-    const distance = Math.abs(sectionCenter - window.innerHeight * 0.5)
+    const shift = clamp((sectionCenter - viewportCenter) / (viewportHeight * 0.6), -1, 1)
+    const shiftCssValue = shift.toFixed(4)
+    if (chapterShiftCssCache.get(chapterId) !== shiftCssValue) {
+      element.style.setProperty('--chapter-shift', shiftCssValue)
+      chapterShiftCssCache.set(chapterId, shiftCssValue)
+    }
+
+    const distance = Math.abs(sectionCenter - viewportCenter)
 
     if (distance < closestDistance) {
       closestDistance = distance
@@ -501,6 +513,40 @@ const updateScrollDrivenState = () => {
       startBarTween()
     }
   })
+
+  if (heroBlock.value) {
+    const rect = heroBlock.value.getBoundingClientRect()
+    const sectionCenter = rect.top + rect.height * 0.5
+    const shift = clamp((sectionCenter - viewportCenter) / (viewportHeight * 0.75), -1, 1)
+    const heroContentShift = `${(shift * 24).toFixed(2)}px`
+    if (heroContentShiftCssCache !== heroContentShift) {
+      heroBlock.value.style.setProperty('--hero-content-shift', heroContentShift)
+      heroContentShiftCssCache = heroContentShift
+    }
+
+    const heroBgShift = `${(shift * -52).toFixed(2)}px`
+    if (heroBgShiftCssCache !== heroBgShift) {
+      heroBlock.value.style.setProperty('--hero-bg-shift', heroBgShift)
+      heroBgShiftCssCache = heroBgShift
+    }
+  }
+
+  if (epilogueBlock.value) {
+    const rect = epilogueBlock.value.getBoundingClientRect()
+    const sectionCenter = rect.top + rect.height * 0.5
+    const shift = clamp((sectionCenter - viewportCenter) / (viewportHeight * 0.75), -1, 1)
+    const epilogueContentShift = `${(shift * 24).toFixed(2)}px`
+    if (epilogueContentShiftCssCache !== epilogueContentShift) {
+      epilogueBlock.value.style.setProperty('--epilogue-content-shift', epilogueContentShift)
+      epilogueContentShiftCssCache = epilogueContentShift
+    }
+
+    const epilogueBgShift = `${(shift * -52).toFixed(2)}px`
+    if (epilogueBgShiftCssCache !== epilogueBgShift) {
+      epilogueBlock.value.style.setProperty('--epilogue-bg-shift', epilogueBgShift)
+      epilogueBgShiftCssCache = epilogueBgShift
+    }
+  }
 
   activeChapter.value = bestChapter
 }
@@ -536,7 +582,7 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
 
 <template>
   <div class="story-page">
-    <header class="hero-block section-gap-xl">
+    <header ref="heroBlock" class="hero-block section-gap-xl">
       <div class="content-shell hero-content">
         <img class="hero-logo reveal" style="--d: 20ms" src="../images/MS_logo.png" alt="Meridian Story logo" />
         <h1 class="reveal" style="--d: 140ms">{{ heroTitle }}</h1>
@@ -689,7 +735,7 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         </div>
       </section>
 
-      <section class="story-chapter story-epilogue section-gap-xl">
+      <section ref="epilogueBlock" class="story-chapter story-epilogue section-gap-xl">
         <div class="content-shell epilogue-content">
           <h2 class="epilogue-headline">Every revolution begins by becoming ordinary.</h2>
           <p class="epilogue-copy">
@@ -740,6 +786,8 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
 }
 
 .hero-block {
+  position: relative;
+  contain: paint;
   min-height: 92svh;
   display: flex;
   align-items: center;
@@ -747,12 +795,18 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
     linear-gradient(90deg, rgba(5, 9, 18, 0.24), rgba(5, 9, 18, 0.04)),
     url('../images/hero.jpg');
   background-size: cover;
-  background-position: center center;
+  background-position: center calc(50% + var(--hero-bg-shift, 0px));
   background-repeat: no-repeat;
+  overflow: clip;
 }
 
 .hero-content {
+  position: relative;
+  z-index: 2;
   max-width: 920px;
+  transform: translate3d(0, var(--hero-content-shift, 0px), 0);
+  transition: transform 120ms linear;
+  will-change: transform;
 }
 
 .hero-logo {
@@ -815,7 +869,10 @@ h2 {
 }
 
 .story-chapter {
+  --chapter-progress: 0;
+  --chapter-shift: 0;
   position: relative;
+  contain: paint;
   min-height: 100svh;
   border-top: 1px solid rgba(72, 86, 150, 0.36);
   overflow: clip;
@@ -824,10 +881,16 @@ h2 {
 .chapter-layout {
   position: relative;
   z-index: 2;
+  transform: translate3d(0, calc(var(--chapter-shift) * 20px), 0);
+  transition: transform 140ms linear;
+  will-change: transform;
 }
 
 .chapter-background {
   pointer-events: none;
+  transform: translate3d(0, calc(var(--chapter-shift) * -34px), 0) scale(1.04);
+  transition: transform 140ms linear;
+  will-change: transform;
 }
 
 .placeholder-label {
@@ -853,7 +916,6 @@ h2 {
     transform 820ms cubic-bezier(0.2, 0.8, 0.2, 1),
     filter 820ms cubic-bezier(0.2, 0.8, 0.2, 1);
   transition-delay: var(--d, 0ms);
-  will-change: transform, opacity, filter;
 }
 
 .story-chapter.is-visible .reveal,
@@ -1137,6 +1199,8 @@ h2 {
 }
 
 .story-epilogue {
+  position: relative;
+  contain: paint;
   min-height: 100svh;
   display: flex;
   align-items: center;
@@ -1144,15 +1208,21 @@ h2 {
   background: linear-gradient(180deg, rgba(5, 9, 18, 0.34), rgba(6, 11, 20, 0.56)),
     url('../images/close.jpg');
   background-size: cover;
-  background-position: center center;
+  background-position: center calc(50% + var(--epilogue-bg-shift, 0px));
   background-repeat: no-repeat;
+  overflow: clip;
 }
 
 .epilogue-content {
+  position: relative;
+  z-index: 2;
   max-width: 820px;
   text-align: center;
   display: grid;
   gap: 0;
+  transform: translate3d(0, var(--epilogue-content-shift, 0px), 0);
+  transition: transform 120ms linear;
+  will-change: transform;
 }
 
 .epilogue-headline {
@@ -1263,9 +1333,34 @@ h2 {
     gap: 0.35rem;
     align-items: center;
   }
+
+  .chapter-layout {
+    transform: translate3d(0, calc(var(--chapter-shift) * 12px), 0);
+  }
+
+  .chapter-background {
+    transform: translate3d(0, calc(var(--chapter-shift) * -20px), 0) scale(1.02);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .epilogue-content {
+    transition: none;
+    transform: none;
+  }
+
+  .hero-block,
+  .story-epilogue {
+    background-position: center center;
+  }
+
+  .chapter-layout,
+  .chapter-background {
+    transition: none;
+    transform: none;
+  }
+
   .reveal {
     transition: none;
     transform: none;
