@@ -1,0 +1,676 @@
+{
+  "meta": {
+    "title": "When Space Becomes Routine Dataset",
+    "description": "Simplified narrative dataset showing the transition from rare government-led space missions to routine commercial orbital transportation.",
+    "units": {
+      "launches": "missions per year",
+      "people": "people reaching orbit per year",
+      "missionCount": "commercial missions per year",
+      "averageTicketPrice": "average ticket price in millions of USD"
+    },
+    "range": {
+      "historicalStart": 2005,
+      "historicalEnd": 2025,
+      "projectionEnd": 2032
+    },
+    "story": {
+      "title": "When Space Becomes Routine",
+      "theme": "Commercial space travel is becoming routine, and that changes everything.",
+      "chapters": 5
+    }
+  },
+  "timeline": [
+    {
+      "year": 2005,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 58,
+        "commercial": 6,
+        "government": 52
+      },
+      "peopleReachingOrbit": {
+        "total": 10,
+        "commercial": 0,
+        "government": 10
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 0
+        },
+        {
+          "name": "Research",
+          "value": 3
+        },
+        {
+          "name": "Cargo",
+          "value": 2
+        },
+        {
+          "name": "Manufacturing",
+          "value": 0
+        },
+        {
+          "name": "Medical",
+          "value": 0
+        },
+        {
+          "name": "Infrastructure",
+          "value": 1
+        }
+      ],
+      "averageTicketPrice": 78
+    },
+    {
+      "year": 2008,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 61,
+        "commercial": 8,
+        "government": 53
+      },
+      "peopleReachingOrbit": {
+        "total": 12,
+        "commercial": 1,
+        "government": 11
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 1
+        },
+        {
+          "name": "Research",
+          "value": 4
+        },
+        {
+          "name": "Cargo",
+          "value": 2
+        },
+        {
+          "name": "Manufacturing",
+          "value": 0
+        },
+        {
+          "name": "Medical",
+          "value": 0
+        },
+        {
+          "name": "Infrastructure",
+          "value": 1
+        }
+      ],
+      "averageTicketPrice": 74
+    },
+    {
+      "year": 2010,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 67,
+        "commercial": 11,
+        "government": 56
+      },
+      "peopleReachingOrbit": {
+        "total": 15,
+        "commercial": 2,
+        "government": 13
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 1
+        },
+        {
+          "name": "Research",
+          "value": 5
+        },
+        {
+          "name": "Cargo",
+          "value": 3
+        },
+        {
+          "name": "Manufacturing",
+          "value": 0
+        },
+        {
+          "name": "Medical",
+          "value": 0
+        },
+        {
+          "name": "Infrastructure",
+          "value": 2
+        }
+      ],
+      "averageTicketPrice": 69
+    },
+    {
+      "year": 2012,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 73,
+        "commercial": 16,
+        "government": 57
+      },
+      "peopleReachingOrbit": {
+        "total": 19,
+        "commercial": 3,
+        "government": 16
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 1
+        },
+        {
+          "name": "Research",
+          "value": 7
+        },
+        {
+          "name": "Cargo",
+          "value": 5
+        },
+        {
+          "name": "Manufacturing",
+          "value": 0
+        },
+        {
+          "name": "Medical",
+          "value": 0
+        },
+        {
+          "name": "Infrastructure",
+          "value": 3
+        }
+      ],
+      "averageTicketPrice": 62
+    },
+    {
+      "year": 2014,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 82,
+        "commercial": 23,
+        "government": 59
+      },
+      "peopleReachingOrbit": {
+        "total": 24,
+        "commercial": 5,
+        "government": 19
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 2
+        },
+        {
+          "name": "Research",
+          "value": 8
+        },
+        {
+          "name": "Cargo",
+          "value": 8
+        },
+        {
+          "name": "Manufacturing",
+          "value": 1
+        },
+        {
+          "name": "Medical",
+          "value": 0
+        },
+        {
+          "name": "Infrastructure",
+          "value": 4
+        }
+      ],
+      "averageTicketPrice": 54
+    },
+    {
+      "year": 2016,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 97,
+        "commercial": 34,
+        "government": 63
+      },
+      "peopleReachingOrbit": {
+        "total": 32,
+        "commercial": 8,
+        "government": 24
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 3
+        },
+        {
+          "name": "Research",
+          "value": 10
+        },
+        {
+          "name": "Cargo",
+          "value": 12
+        },
+        {
+          "name": "Manufacturing",
+          "value": 2
+        },
+        {
+          "name": "Medical",
+          "value": 1
+        },
+        {
+          "name": "Infrastructure",
+          "value": 6
+        }
+      ],
+      "averageTicketPrice": 44
+    },
+    {
+      "year": 2018,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 114,
+        "commercial": 49,
+        "government": 65
+      },
+      "peopleReachingOrbit": {
+        "total": 47,
+        "commercial": 16,
+        "government": 31
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 5
+        },
+        {
+          "name": "Research",
+          "value": 12
+        },
+        {
+          "name": "Cargo",
+          "value": 17
+        },
+        {
+          "name": "Manufacturing",
+          "value": 3
+        },
+        {
+          "name": "Medical",
+          "value": 2
+        },
+        {
+          "name": "Infrastructure",
+          "value": 10
+        }
+      ],
+      "averageTicketPrice": 35
+    },
+    {
+      "year": 2020,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 132,
+        "commercial": 63,
+        "government": 69
+      },
+      "peopleReachingOrbit": {
+        "total": 71,
+        "commercial": 30,
+        "government": 41
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 7
+        },
+        {
+          "name": "Research",
+          "value": 14
+        },
+        {
+          "name": "Cargo",
+          "value": 22
+        },
+        {
+          "name": "Manufacturing",
+          "value": 5
+        },
+        {
+          "name": "Medical",
+          "value": 3
+        },
+        {
+          "name": "Infrastructure",
+          "value": 12
+        }
+      ],
+      "averageTicketPrice": 28
+    },
+    {
+      "year": 2022,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 166,
+        "commercial": 93,
+        "government": 73
+      },
+      "peopleReachingOrbit": {
+        "total": 126,
+        "commercial": 72,
+        "government": 54
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 12
+        },
+        {
+          "name": "Research",
+          "value": 17
+        },
+        {
+          "name": "Cargo",
+          "value": 30
+        },
+        {
+          "name": "Manufacturing",
+          "value": 8
+        },
+        {
+          "name": "Medical",
+          "value": 5
+        },
+        {
+          "name": "Infrastructure",
+          "value": 21
+        }
+      ],
+      "averageTicketPrice": 21
+    },
+    {
+      "year": 2024,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 212,
+        "commercial": 133,
+        "government": 79
+      },
+      "peopleReachingOrbit": {
+        "total": 214,
+        "commercial": 149,
+        "government": 65
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 18
+        },
+        {
+          "name": "Research",
+          "value": 19
+        },
+        {
+          "name": "Cargo",
+          "value": 39
+        },
+        {
+          "name": "Manufacturing",
+          "value": 13
+        },
+        {
+          "name": "Medical",
+          "value": 8
+        },
+        {
+          "name": "Infrastructure",
+          "value": 36
+        }
+      ],
+      "averageTicketPrice": 16
+    },
+    {
+      "year": 2025,
+      "isProjection": false,
+      "launchFrequency": {
+        "total": 236,
+        "commercial": 154,
+        "government": 82
+      },
+      "peopleReachingOrbit": {
+        "total": 267,
+        "commercial": 192,
+        "government": 75
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 22
+        },
+        {
+          "name": "Research",
+          "value": 20
+        },
+        {
+          "name": "Cargo",
+          "value": 44
+        },
+        {
+          "name": "Manufacturing",
+          "value": 16
+        },
+        {
+          "name": "Medical",
+          "value": 10
+        },
+        {
+          "name": "Infrastructure",
+          "value": 42
+        }
+      ],
+      "averageTicketPrice": 14
+    },
+    {
+      "year": 2026,
+      "isProjection": true,
+      "launchFrequency": {
+        "total": 258,
+        "commercial": 172,
+        "government": 86
+      },
+      "peopleReachingOrbit": {
+        "total": 312,
+        "commercial": 232,
+        "government": 80
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 26
+        },
+        {
+          "name": "Research",
+          "value": 21
+        },
+        {
+          "name": "Cargo",
+          "value": 47
+        },
+        {
+          "name": "Manufacturing",
+          "value": 19
+        },
+        {
+          "name": "Medical",
+          "value": 12
+        },
+        {
+          "name": "Infrastructure",
+          "value": 47
+        }
+      ],
+      "averageTicketPrice": 13
+    },
+    {
+      "year": 2028,
+      "isProjection": true,
+      "launchFrequency": {
+        "total": 304,
+        "commercial": 211,
+        "government": 93
+      },
+      "peopleReachingOrbit": {
+        "total": 401,
+        "commercial": 313,
+        "government": 88
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 34
+        },
+        {
+          "name": "Research",
+          "value": 24
+        },
+        {
+          "name": "Cargo",
+          "value": 53
+        },
+        {
+          "name": "Manufacturing",
+          "value": 25
+        },
+        {
+          "name": "Medical",
+          "value": 16
+        },
+        {
+          "name": "Infrastructure",
+          "value": 59
+        }
+      ],
+      "averageTicketPrice": 11
+    },
+    {
+      "year": 2030,
+      "isProjection": true,
+      "launchFrequency": {
+        "total": 352,
+        "commercial": 254,
+        "government": 98
+      },
+      "peopleReachingOrbit": {
+        "total": 522,
+        "commercial": 425,
+        "government": 97
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 42
+        },
+        {
+          "name": "Research",
+          "value": 27
+        },
+        {
+          "name": "Cargo",
+          "value": 60
+        },
+        {
+          "name": "Manufacturing",
+          "value": 33
+        },
+        {
+          "name": "Medical",
+          "value": 21
+        },
+        {
+          "name": "Infrastructure",
+          "value": 71
+        }
+      ],
+      "averageTicketPrice": 9
+    },
+    {
+      "year": 2032,
+      "isProjection": true,
+      "launchFrequency": {
+        "total": 407,
+        "commercial": 305,
+        "government": 102
+      },
+      "peopleReachingOrbit": {
+        "total": 678,
+        "commercial": 573,
+        "government": 105
+      },
+      "commercialMissionActivity": [
+        {
+          "name": "Tourism",
+          "value": 53
+        },
+        {
+          "name": "Research",
+          "value": 31
+        },
+        {
+          "name": "Cargo",
+          "value": 67
+        },
+        {
+          "name": "Manufacturing",
+          "value": 42
+        },
+        {
+          "name": "Medical",
+          "value": 27
+        },
+        {
+          "name": "Infrastructure",
+          "value": 85
+        }
+      ],
+      "averageTicketPrice": 8
+    }
+  ],
+  "chapterSignals": {
+    "chapter1_notLongAgo": {
+      "years": [
+        2005,
+        2010
+      ],
+      "message": "Space access is rare, expensive, and mostly government-led."
+    },
+    "chapter2_everythingChanged": {
+      "years": [
+        2012,
+        2018
+      ],
+      "message": "Commercial cadence rises quickly while cost drops."
+    },
+    "chapter3_crossedThreshold": {
+      "years": [
+        2020,
+        2025
+      ],
+      "message": "Commercial launches and passengers become the majority."
+    },
+    "chapter4_expandingPossibilities": {
+      "years": [
+        2022,
+        2030
+      ],
+      "message": "Activity spreads from research and cargo into tourism, manufacturing, medical, and infrastructure."
+    },
+    "chapter5_whatsNext": {
+      "years": [
+        2028,
+        2032
+      ],
+      "message": "Growth continues, suggesting routine access and a broader orbital economy without overpromising outcomes."
+    }
+  }
+}
