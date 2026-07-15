@@ -530,7 +530,7 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
   <div class="story-page">
     <header class="hero-block section-gap-xl">
       <div class="content-shell hero-content">
-        <p class="hero-kicker reveal" style="--d: 40ms">Meridian Story</p>
+        <img class="hero-logo reveal" style="--d: 20ms" src="../images/MS_logo.png" alt="Meridian Story logo" />
         <h1 class="reveal" style="--d: 140ms">{{ heroTitle }}</h1>
         <p class="hero-theme reveal" style="--d: 240ms">{{ heroTheme }}</p>
         <p class="hero-subtext reveal" style="--d: 340ms">
@@ -547,7 +547,6 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         :class="{ 'is-visible': visibleChapters.chapter1_notLongAgo, 'is-active': activeChapter === 'chapter1_notLongAgo' }"
       >
         <div class="chapter-background">
-          <div class="placeholder-label">cinematic background placeholder</div>
         </div>
         <div class="content-shell chapter-layout chapter1-layout">
           <div class="chapter-copy reveal" style="--d: 80ms">
@@ -748,10 +747,23 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
   min-height: 92svh;
   display: flex;
   align-items: center;
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.46), rgba(5, 9, 18, 0.64)),
+    linear-gradient(90deg, rgba(5, 9, 18, 0.42), rgba(5, 9, 18, 0.06)),
+    url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .hero-content {
   max-width: 920px;
+}
+
+.hero-logo {
+  width: clamp(170px, 18vw, 280px);
+  height: auto;
+  display: block;
+  margin-bottom: 1.1rem;
 }
 
 .hero-kicker,
@@ -765,7 +777,7 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
 
 h1,
 h2 {
-  margin: 0.9rem 0 0;
+  margin: 2.76rem 0 0;
   line-height: 1.04;
   letter-spacing: -0.02em;
   font-family: Georgia, 'Times New Roman', serif;
@@ -1167,8 +1179,19 @@ h2 {
 }
 
 .bg-orbit-dawn {
-  background: radial-gradient(circle at 80% 20%, rgba(249, 199, 132, 0.24), rgba(249, 199, 132, 0) 34%),
-    linear-gradient(132deg, rgba(72, 86, 150, 0.72), rgba(16, 22, 42, 0.92));
+  background: linear-gradient(132deg, rgba(72, 86, 150, 0.72), rgba(16, 22, 42, 0.92));
+}
+
+.bg-orbit-dawn .chapter-background {
+  background-image: radial-gradient(circle at 80% 20%, rgba(249, 199, 132, 0.1), rgba(249, 199, 132, 0) 34%),
+    linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter1.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.bg-orbit-dawn .chapter-background::before {
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.18), rgba(5, 9, 18, 0.38));
 }
 
 .bg-engine-trails {
