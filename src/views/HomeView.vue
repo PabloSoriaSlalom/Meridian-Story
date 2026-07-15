@@ -577,7 +577,6 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         :class="{ 'is-visible': visibleChapters.chapter2_everythingChanged, 'is-active': activeChapter === 'chapter2_everythingChanged' }"
       >
         <div class="chapter-background">
-          <div class="placeholder-label">cinematic background placeholder</div>
         </div>
         <div class="content-shell chapter-layout">
           <div class="chapter-head reveal" style="--d: 70ms">
@@ -605,7 +604,6 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         :class="{ 'is-visible': visibleChapters.chapter3_crossedThreshold, 'is-active': activeChapter === 'chapter3_crossedThreshold' }"
       >
         <div class="chapter-background">
-          <div class="placeholder-label">cinematic background placeholder</div>
         </div>
         <div class="content-shell chapter-layout threshold-layout">
           <p class="chapter-kicker reveal" style="--d: 70ms">Chapter 3 - We've Crossed a Threshold</p>
@@ -630,7 +628,6 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         :class="{ 'is-visible': visibleChapters.chapter4_expandingPossibilities, 'is-active': activeChapter === 'chapter4_expandingPossibilities' }"
       >
         <div class="chapter-background">
-          <div class="placeholder-label">cinematic background placeholder</div>
         </div>
         <div class="content-shell chapter-layout ecosystem-layout">
           <div class="ecosystem-copy reveal" style="--d: 80ms">
@@ -662,7 +659,6 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         :class="{ 'is-visible': visibleChapters.chapter5_whatsNext, 'is-active': activeChapter === 'chapter5_whatsNext' }"
       >
         <div class="chapter-background">
-          <div class="placeholder-label">cinematic background placeholder</div>
         </div>
         <div class="content-shell chapter-layout finale-layout">
           <div class="finale-text reveal" style="--d: 80ms">
@@ -956,7 +952,7 @@ h2 {
   width: min(780px, 100%);
   border: 1px solid rgba(72, 86, 150, 0.42);
   border-radius: 16px;
-  background: rgba(18, 24, 44, 0.64);
+  background: rgba(18, 24, 44, 0.82);
   padding: 0.9rem;
 }
 
@@ -1004,7 +1000,7 @@ h2 {
 .wide-chart-frame {
   height: 380px;
   border: 1px solid rgba(72, 86, 150, 0.42);
-  background: rgba(18, 24, 44, 0.68);
+  background: rgba(18, 24, 44, 0.84);
   border-radius: 20px;
   padding: 1rem;
 }
@@ -1064,6 +1060,10 @@ h2 {
   margin-top: 0.35rem;
   width: min(760px, 100%);
   height: 215px;
+  border: 1px solid rgba(72, 86, 150, 0.42);
+  border-radius: 16px;
+  background: rgba(18, 24, 44, 0.84);
+  padding: 0.9rem;
 }
 
 .ecosystem-layout {
@@ -1092,7 +1092,7 @@ h2 {
   height: 390px;
   border: 1px solid rgba(72, 86, 150, 0.42);
   border-radius: 18px;
-  background: rgba(18, 24, 44, 0.68);
+  background: rgba(18, 24, 44, 0.84);
   padding: 1rem;
 }
 
@@ -1132,7 +1132,7 @@ h2 {
   height: 250px;
   border: 1px solid rgba(72, 86, 150, 0.42);
   border-radius: 14px;
-  background: rgba(18, 24, 44, 0.68);
+  background: rgba(18, 24, 44, 0.84);
   padding: 0.9rem;
 }
 
@@ -1155,7 +1155,11 @@ h2 {
   display: flex;
   align-items: center;
   border-top: 1px solid rgba(72, 86, 150, 0.35);
-  background: linear-gradient(180deg, rgba(5, 9, 18, 0.98), rgba(6, 11, 20, 1));
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.42), rgba(6, 11, 20, 0.74)),
+    url('../images/close.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .epilogue-content {
@@ -1183,8 +1187,7 @@ h2 {
 }
 
 .bg-orbit-dawn .chapter-background {
-  background-image: radial-gradient(circle at 80% 20%, rgba(249, 199, 132, 0.1), rgba(249, 199, 132, 0) 34%),
-    linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter1.jpg');
+  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter1.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -1195,44 +1198,72 @@ h2 {
 }
 
 .bg-engine-trails {
-  background: repeating-linear-gradient(
-      114deg,
-      rgba(72, 86, 150, 0.2) 0,
-      rgba(72, 86, 150, 0.2) 11px,
-      rgba(6, 12, 24, 0) 11px,
-      rgba(6, 12, 24, 0) 24px
-    ),
-    linear-gradient(145deg, rgba(25, 33, 58, 0.9), rgba(11, 20, 36, 0.95));
+  background: linear-gradient(145deg, rgba(25, 33, 58, 0.9), rgba(11, 20, 36, 0.95));
+}
+
+.bg-engine-trails .chapter-background {
+  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter2.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.bg-engine-trails .chapter-background::before {
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.18), rgba(5, 9, 18, 0.38));
 }
 
 .bg-traffic-lines {
   background: linear-gradient(120deg, rgba(28, 42, 79, 0.9), rgba(10, 19, 35, 0.95));
 }
 
+.bg-traffic-lines .chapter-background {
+  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter3.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.bg-traffic-lines .chapter-background::before {
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.18), rgba(5, 9, 18, 0.38));
+}
+
 .bg-traffic-lines::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle at 20% 30%, rgba(252, 122, 30, 0.2), transparent 38%),
-    radial-gradient(circle at 75% 66%, rgba(249, 199, 132, 0.17), transparent 44%);
+  content: none;
 }
 
 .bg-orbital-grid {
   background: linear-gradient(135deg, rgba(27, 39, 71, 0.9), rgba(9, 18, 33, 0.95));
 }
 
+.bg-orbital-grid .chapter-background {
+  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter4.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.bg-orbital-grid .chapter-background::before {
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.28), rgba(5, 9, 18, 0.56));
+}
+
 .bg-orbital-grid::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(72, 86, 150, 0.25) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(72, 86, 150, 0.25) 1px, transparent 1px);
-  background-size: 38px 38px;
+  content: none;
 }
 
 .bg-horizon {
   background: radial-gradient(circle at 50% 100%, rgba(242, 76, 0, 0.33), rgba(8, 14, 26, 0) 46%),
     linear-gradient(180deg, rgba(28, 41, 76, 0.9), rgba(7, 12, 22, 0.98));
+}
+
+.bg-horizon .chapter-background {
+  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter5.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.bg-horizon .chapter-background::before {
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.18), rgba(5, 9, 18, 0.38));
 }
 
 @media (max-width: 980px) {
