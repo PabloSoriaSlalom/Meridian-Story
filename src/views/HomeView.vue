@@ -14,7 +14,15 @@ import {
   Tooltip,
 } from 'chart.js'
 import { Bar, Line } from 'vue-chartjs'
+import ChapterBackgroundImage from '../components/ChapterBackgroundImage.vue'
+import ChapterEyebrow from '../components/ChapterEyebrow.vue'
+import MetricMiniCard from '../components/MetricMiniCard.vue'
 import storyData from '../data/space-story.json'
+import chapter1Image from '../images/chapter1.jpg'
+import chapter2Image from '../images/chapter2.jpg'
+import chapter3Image from '../images/chapter3.jpg'
+import chapter4Image from '../images/chapter4.jpg'
+import chapter5Image from '../images/chapter5.jpg'
 
 const clipByProgressPlugin = {
   id: 'clipByProgress',
@@ -546,11 +554,10 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         class="story-chapter section-gap-lg chapter-intro bg-orbit-dawn"
         :class="{ 'is-visible': visibleChapters.chapter1_notLongAgo, 'is-active': activeChapter === 'chapter1_notLongAgo' }"
       >
-        <div class="chapter-background">
-        </div>
+        <ChapterBackgroundImage :image-src="chapter1Image" />
         <div class="content-shell chapter-layout chapter1-layout">
           <div class="chapter-copy reveal" style="--d: 80ms">
-            <p class="chapter-kicker">Chapter 1 - Not Long Ago</p>
+            <ChapterEyebrow text="Chapter 1 - Not Long Ago" />
             <h2>Space was extraordinary.</h2>
             <p class="chapter-message">
               Access to orbit remained rare, expensive, and concentrated in government programs.
@@ -576,11 +583,10 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         class="story-chapter section-gap-xl chapter-visual bg-engine-trails"
         :class="{ 'is-visible': visibleChapters.chapter2_everythingChanged, 'is-active': activeChapter === 'chapter2_everythingChanged' }"
       >
-        <div class="chapter-background">
-        </div>
+        <ChapterBackgroundImage :image-src="chapter2Image" />
         <div class="content-shell chapter-layout">
           <div class="chapter-head reveal" style="--d: 70ms">
-            <p class="chapter-kicker">Chapter 2 - Everything Changed</p>
+            <ChapterEyebrow text="Chapter 2 - Everything Changed" />
             <h2>The curve bent fast.</h2>
             <p class="chapter-message">
               Commercial launch cadence climbed as ticket prices dropped, changing the trajectory of the entire
@@ -603,10 +609,9 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         class="story-chapter section-gap-md chapter-threshold bg-traffic-lines"
         :class="{ 'is-visible': visibleChapters.chapter3_crossedThreshold, 'is-active': activeChapter === 'chapter3_crossedThreshold' }"
       >
-        <div class="chapter-background">
-        </div>
+        <ChapterBackgroundImage :image-src="chapter3Image" />
         <div class="content-shell chapter-layout threshold-layout">
-          <p class="chapter-kicker reveal" style="--d: 70ms">Chapter 3 - We've Crossed a Threshold</p>
+          <ChapterEyebrow class="reveal" style="--d: 70ms" text="Chapter 3 - We've Crossed a Threshold" />
           <h2 class="reveal" style="--d: 170ms">The transformation is already happening.</h2>
           <div class="hero-number reveal" style="--d: 300ms">
             {{ formatNumber(animatedValues.c3People2025) }}
@@ -627,11 +632,14 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         class="story-chapter section-gap-xl chapter-ecosystem bg-orbital-grid"
         :class="{ 'is-visible': visibleChapters.chapter4_expandingPossibilities, 'is-active': activeChapter === 'chapter4_expandingPossibilities' }"
       >
-        <div class="chapter-background">
-        </div>
+        <ChapterBackgroundImage
+          :image-src="chapter4Image"
+          overlay-from="rgba(5, 9, 18, 0.28)"
+          overlay-to="rgba(5, 9, 18, 0.56)"
+        />
         <div class="content-shell chapter-layout ecosystem-layout">
           <div class="ecosystem-copy reveal" style="--d: 80ms">
-            <p class="chapter-kicker">Chapter 4 - Expanding Possibilities</p>
+            <ChapterEyebrow text="Chapter 4 - Expanding Possibilities" />
             <h2>Space is becoming an economy.</h2>
             <p class="chapter-message">
               The destination did not change. The reasons for going did.
@@ -658,11 +666,10 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
         class="story-chapter section-gap-lg chapter-finale bg-horizon"
         :class="{ 'is-visible': visibleChapters.chapter5_whatsNext, 'is-active': activeChapter === 'chapter5_whatsNext' }"
       >
-        <div class="chapter-background">
-        </div>
+        <ChapterBackgroundImage :image-src="chapter5Image" />
         <div class="content-shell chapter-layout finale-layout">
           <div class="finale-text reveal" style="--d: 80ms">
-            <p class="chapter-kicker">Chapter 5 - What's Next?</p>
+            <ChapterEyebrow text="Chapter 5 - What's Next?" />
             <h2>Possibility, not prediction.</h2>
             <p class="chapter-message">
               Routine access doesn't tell us exactly what comes next.
@@ -672,14 +679,14 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
             </p>
           </div>
           <div class="finale-metrics reveal" style="--d: 210ms">
-            <div>
-              <span>Projected people in orbit by 2032</span>
-              <strong>{{ formatNumber(animatedValues.c5People2032) }}</strong>
-            </div>
-            <div>
-              <span>Projected average ticket price</span>
-              <strong>{{ animatedValues.c5Ticket2032 }}M USD</strong>
-            </div>
+            <MetricMiniCard
+              label="Projected people in orbit by 2032"
+              :value="formatNumber(animatedValues.c5People2032)"
+            />
+            <MetricMiniCard
+              label="Projected average ticket price"
+              :value="`${animatedValues.c5Ticket2032}M USD`"
+            />
           </div>
           <div class="finale-chart reveal" style="--d: 330ms">
             <Line :data="chapter5ChartData" :options="chapter5LineOptions" />
@@ -697,6 +704,7 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-US').format(va
             They begin asking what they can build with it.
           </p>
           <p class="epilogue-copy">Commercial spaceflight may be entering that moment now.</p>
+          <img class="epilogue-logo" src="../images/MS_logo.png" alt="Meridian Story logo" />
         </div>
       </section>
     </main>
@@ -817,16 +825,7 @@ h2 {
 }
 
 .chapter-background {
-  position: absolute;
-  inset: 0;
-  opacity: 0.72;
-}
-
-.chapter-background::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(5, 9, 18, 0.52), rgba(5, 9, 18, 0.9));
+  pointer-events: none;
 }
 
 .placeholder-label {
@@ -1109,25 +1108,6 @@ h2 {
   gap: 1rem;
 }
 
-.finale-metrics > div {
-  border: 1px solid rgba(72, 86, 150, 0.42);
-  background: rgba(18, 24, 44, 0.68);
-  border-radius: 14px;
-  padding: 1rem;
-}
-
-.finale-metrics span {
-  display: block;
-  color: #d0d2db;
-}
-
-.finale-metrics strong {
-  display: block;
-  margin-top: 0.45rem;
-  font-size: clamp(1.9rem, 4.6vw, 3.2rem);
-  line-height: 0.95;
-}
-
 .finale-chart {
   height: 250px;
   border: 1px solid rgba(72, 86, 150, 0.42);
@@ -1182,88 +1162,32 @@ h2 {
   line-height: 1.75;
 }
 
+.epilogue-logo {
+  width: clamp(170px, 18vw, 280px);
+  height: auto;
+  justify-self: center;
+  margin-top: 1.25rem;
+}
+
 .bg-orbit-dawn {
   background: linear-gradient(132deg, rgba(72, 86, 150, 0.72), rgba(16, 22, 42, 0.92));
-}
-
-.bg-orbit-dawn .chapter-background {
-  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter1.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.bg-orbit-dawn .chapter-background::before {
-  background: linear-gradient(180deg, rgba(5, 9, 18, 0.18), rgba(5, 9, 18, 0.38));
 }
 
 .bg-engine-trails {
   background: linear-gradient(145deg, rgba(25, 33, 58, 0.9), rgba(11, 20, 36, 0.95));
 }
 
-.bg-engine-trails .chapter-background {
-  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter2.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.bg-engine-trails .chapter-background::before {
-  background: linear-gradient(180deg, rgba(5, 9, 18, 0.18), rgba(5, 9, 18, 0.38));
-}
-
 .bg-traffic-lines {
   background: linear-gradient(120deg, rgba(28, 42, 79, 0.9), rgba(10, 19, 35, 0.95));
-}
-
-.bg-traffic-lines .chapter-background {
-  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter3.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.bg-traffic-lines .chapter-background::before {
-  background: linear-gradient(180deg, rgba(5, 9, 18, 0.18), rgba(5, 9, 18, 0.38));
-}
-
-.bg-traffic-lines::after {
-  content: none;
 }
 
 .bg-orbital-grid {
   background: linear-gradient(135deg, rgba(27, 39, 71, 0.9), rgba(9, 18, 33, 0.95));
 }
 
-.bg-orbital-grid .chapter-background {
-  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter4.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.bg-orbital-grid .chapter-background::before {
-  background: linear-gradient(180deg, rgba(5, 9, 18, 0.28), rgba(5, 9, 18, 0.56));
-}
-
-.bg-orbital-grid::after {
-  content: none;
-}
-
 .bg-horizon {
   background: radial-gradient(circle at 50% 100%, rgba(242, 76, 0, 0.33), rgba(8, 14, 26, 0) 46%),
     linear-gradient(180deg, rgba(28, 41, 76, 0.9), rgba(7, 12, 22, 0.98));
-}
-
-.bg-horizon .chapter-background {
-  background-image: linear-gradient(132deg, rgba(10, 16, 31, 0.1), rgba(6, 12, 24, 0.26)), url('../images/chapter5.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.bg-horizon .chapter-background::before {
-  background: linear-gradient(180deg, rgba(5, 9, 18, 0.18), rgba(5, 9, 18, 0.38));
 }
 
 @media (max-width: 980px) {
