@@ -341,7 +341,24 @@ const chapter2Options: ChartOptions<'line'> = {
   },
 }
 
-const chapter1LineOptions = computed(() => withLineClipProgress(chapterProgress.chapter1_notLongAgo, sharedLineOptions))
+const chapter1Options: ChartOptions<'line'> = {
+  ...sharedLineOptions,
+  scales: {
+    x: {
+      ticks: { color: '#B9BDD4' },
+      grid: { color: 'rgba(72, 86, 150, 0.28)' },
+    },
+    y: {
+      ticks: { color: '#B9BDD4' },
+      grid: { color: 'rgba(72, 86, 150, 0.28)' },
+      beginAtZero: true,
+    },
+  },
+}
+
+const chapter1LineOptions = computed(() =>
+  withLineClipProgress(chapterProgress.chapter1_notLongAgo, chapter1Options),
+)
 const chapter2LineOptions = computed(() =>
   withLineClipProgress(chapterProgress.chapter2_everythingChanged, chapter2Options),
 )
@@ -1276,15 +1293,36 @@ h2 {
   }
 
   .section-gap-xl {
-    padding: 5.4rem 0;
+    padding: 3.6rem 0;
   }
 
   .section-gap-lg {
-    padding: 4.8rem 0;
+    padding: 3.1rem 0;
   }
 
   .section-gap-md {
-    padding: 4rem 0;
+    padding: 2.7rem 0;
+  }
+
+  .hero-block {
+    min-height: clamp(480px, 64svh, 560px);
+    align-items: flex-start;
+    padding-top: 2.6rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-content {
+    max-width: 34rem;
+  }
+
+  h1,
+  h2 {
+    margin-top: 1.7rem;
+  }
+
+  .hero-logo {
+    top: 0.6rem;
+    margin-bottom: 0.45rem;
   }
 
   .story-chapter {
@@ -1292,13 +1330,19 @@ h2 {
   }
 
   .chapter-threshold {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
   }
 
   .split-layout,
   .ecosystem-layout {
     grid-template-columns: 1fr;
+  }
+
+  .ecosystem-layout,
+  .finale-layout {
+    min-height: auto;
+    align-content: start;
   }
 
   .chapter1-layout {
